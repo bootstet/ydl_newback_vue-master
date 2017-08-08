@@ -159,7 +159,8 @@ import store from '../vuex/store';
 		    },
             // 渠道数组
             arrychannel:function(){
-                let _this = this;
+				let _this = this;
+				console.log(store)
                 let channelid = store.getters.channelid.split(',');
                 let channelname = store.getters.channelname.split(',');
 				_this.options.push({

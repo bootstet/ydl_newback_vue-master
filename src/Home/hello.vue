@@ -69,7 +69,7 @@ export default {
 <style lang="css">
     .hello-nav {
 
-        color: #fff;
+        color: skyblue;
         font-size: 40px;
 
     }

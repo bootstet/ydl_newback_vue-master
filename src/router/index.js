@@ -23,6 +23,12 @@ import subChannel from '../basicData/subChannel'; //分渠道数据
 import heldOutData from '../basicData/heldOutData'; //留存数据
 import liveOnlineDetails from '../basicData/liveOnlineDetails'; //实时在线详情
 import realTimeMatching from '../basicData/realTimeMatching'; //实时匹配详情
+import realTimeCommunicateNumber from '../basicData/realTimeCommunicateNumber.vue'; //实时通话次数
+import everydayTotalData from '../basicData/everydayTotalData.vue'; //每日总数据大全
+import everyMonthRechargeDetail from '../basicData/everyMonthRechargeDetail.vue'; //每月充值明细
+import everyDayCurrntTimeRecharge from '../basicData/everyDayCurrntTimeRecharge.vue'; //每日实时充值
+import everyDayRechargeDetail from '../basicData/everyDayRechargeDetail.vue'; //每日充值明细
+import dayActivityUserActive from '../basicData/dayActivityUserActive.vue'; //日活用户行为
 
 // 把router 引用进入vue
 Vue.use(VueRouter);
@@ -70,6 +76,12 @@ export const asyncRouterMap = [
                     { path: '/heldOutData', component: heldOutData, name: '留存数据', hidden: false ,meta: { role: ['admin'] }},
                     { path: '/liveOnlineDetails', component: liveOnlineDetails, name: '实时在线详情', hidden: false ,meta: { role: ['admin'] }},
                     { path: '/realTimeMatching', component: realTimeMatching, name: '实时匹配详情', hidden: false ,meta: { role: ['admin'] }},
+                    { path: '/realTimeCommunicateNumber', component: realTimeCommunicateNumber, name: '实时通话次数', hidden: false ,meta: { role: ['admin'] }},
+                    { path: '/everydayTotalData', component: everydayTotalData, name: '每日总数据大全', hidden: false ,meta: { role: ['admin'] }},
+                    { path: '/everyMonthRechargeDetail', component: everyMonthRechargeDetail, name: '每月充值明细', hidden: false ,meta: { role: ['admin'] }},
+                    { path: '/everyDayCurrntTimeRecharge', component: everyDayCurrntTimeRecharge, name: '每日实时充值', hidden: false ,meta: { role: ['admin'] }},
+                    { path: '/everyDayRechargeDetail', component: everyDayRechargeDetail, name: '每日充值明细', hidden: false ,meta: { role: ['admin'] }},
+                    { path: '/dayActivityUserActive', component: dayActivityUserActive, name: '日活用户行为', hidden: false ,meta: { role: ['admin'] }},
                     // { path: '/401', component: Err401, name: '401' },
                 ]
             },

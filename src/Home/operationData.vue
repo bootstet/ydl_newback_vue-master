@@ -12,6 +12,12 @@
                         <el-menu-item index="heldOutData">留存数据</el-menu-item>
                         <el-menu-item index="liveOnlineDetails">实时在线详情</el-menu-item>
                         <el-menu-item index="realTimeMatching">实时匹配详情</el-menu-item>
+                        <el-menu-item index="realTimeCommunicateNumber">实时通话次数</el-menu-item>
+                        <el-menu-item index="everydayTotalData">每日总数据大全</el-menu-item>
+                        <el-menu-item index="everyMonthRechargeDetail">每月充值明细</el-menu-item>
+                        <el-menu-item index="everyDayCurrntTimeRecharge">每日实时充值</el-menu-item>
+                        <el-menu-item index="everyDayRechargeDetail">每日充值明细</el-menu-item>
+                        <el-menu-item index="dayActivityUserActive">日活用户行为</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="2">
