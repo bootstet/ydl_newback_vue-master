@@ -36,9 +36,9 @@
 		<!--列表-->
 		<template>
 			<el-table :data="pageTw" border fit highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;" max-height="380" height="250" >
-				<el-table-column type="index" width="70" fixed="right"  >
+				<el-table-column type="index" width="50" fixed="left"  >
 				</el-table-column>
-				<el-table-column prop="time" label="日期" width="120" sortable >
+				<el-table-column prop="time" label="日期" width="50" sortable >
 				</el-table-column>
 				<el-table-column prop="active" label="日活" width="50" sortable>
 				</el-table-column>
@@ -46,7 +46,7 @@
 				</el-table-column>
 				<el-table-column prop="act" label="活跃度" width="50" sortable>
 				</el-table-column>
-				<el-table-column prop="day_online_best" label="在线最高峰" min-width="50" sortable>
+				<el-table-column prop="day_online_best" label="在线最高峰" width="50" sortable>
 				</el-table-column>
 
                 <el-table-column prop="day_callnum_best" label="通话次数最高峰" min-width="50" sortable>
@@ -66,23 +66,23 @@
 				</el-table-column>
                 <el-table-column prop="totalrandcall" label="随机通话次数" min-width="50" sortable>
 				</el-table-column>
-                <el-table-column prop="totalrandtime" label="随机通话时长" min-width="50" sortable>
+                <el-table-column prop="totalrandtime" label="随机通话时长" min-width="100" sortable>
 				</el-table-column>
-                <el-table-column prop="rand_valid_rate" label="有效通话占比" min-width="50" sortable>
-				</el-table-column>
-
-                <el-table-column prop="rand_avgtime" label="平均随机通话时长" min-width="50" sortable>
-				</el-table-column>
-                <el-table-column prop="listen_times" label="偷听次数" min-width="50" sortable>
-				</el-table-column>
-                <el-table-column prop="listen_long" label="偷听时长" min-width="50" sortable>
-				</el-table-column>
-                <el-table-column prop="listen_valid_rate" label="≥3占比" min-width="50" sortable>
-				</el-table-column>
-                <el-table-column prop="listen_avgtime" label="平均偷听时长(秒)" min-width="60" sortable>
+                <el-table-column prop="rand_valid_rate" label="有效通话占比" min-width="100" sortable>
 				</el-table-column>
 
-                <el-table-column prop="totalredcall" label="热线通话次数" min-width="50" sortable>
+                <el-table-column prop="rand_avgtime" label="平均随机通话时长" min-width="100" sortable>
+				</el-table-column>
+                <el-table-column prop="listen_times" label="偷听次数" min-width="100" sortable>
+				</el-table-column>
+                <el-table-column prop="listen_long" label="偷听时长" min-width="100" sortable>
+				</el-table-column>
+                <el-table-column prop="listen_valid_rate" label="≥3占比" min-width="100" sortable>
+				</el-table-column>
+                <el-table-column prop="listen_avgtime" label="平均偷听时长(秒)" min-width="100" sortable>
+				</el-table-column>
+
+                <el-table-column prop="totalredcall" label="热线通话次数" min-width="100" sortable>
 				</el-table-column>
                 <el-table-column prop="totalredtime" label="热线通话时长" min-width="100" sortable>
 				</el-table-column>
@@ -144,7 +144,7 @@
 
 	</section>
 </template>
-<script>
+<script type="text/ecmascript-6">
 import { allget } from '../api/api';
 import echarts from 'echarts';
 	export default {
