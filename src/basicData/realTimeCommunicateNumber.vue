@@ -245,7 +245,7 @@ import echarts from 'echarts';
 				this.chartLine = echarts.init(document.getElementById('chartLine'));
 				this.chartLine.setOption({
 	                title: {
-	                    text: '总渠道数据管理'
+	                    text: '实时通话次数'
 	                },
 	                tooltip: {
 	                    trigger: 'axis'

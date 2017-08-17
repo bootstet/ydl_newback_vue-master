@@ -27,7 +27,7 @@ export default {
         return {
             logining: false,
             ruleForm2: {
-                account: 'cyz',
+                account: 'ghn',
                 checkPass: '123456'
             },
             rules2: {
