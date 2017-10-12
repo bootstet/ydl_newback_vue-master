@@ -17,7 +17,7 @@
                         <el-menu-item index="everyMonthRechargeDetail">每月充值明细</el-menu-item>
                         <el-menu-item index="everyDayCurrntTimeRecharge">每日实时充值</el-menu-item>
                         <el-menu-item index="everyDayRechargeDetail">每日充值明细</el-menu-item>
-                        <el-menu-item index="dayActivityUserActive">日活用户行为</el-menu-item>
+                        <el-menu-item index="dailyCallSummary">日活用户行为</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="2">

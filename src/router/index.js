@@ -28,7 +28,7 @@ import everydayTotalData from '../basicData/everydayTotalData.vue'; //每日总�
 import everyMonthRechargeDetail from '../basicData/everyMonthRechargeDetail.vue'; //每月充值明细
 import everyDayCurrntTimeRecharge from '../basicData/everyDayCurrntTimeRecharge.vue'; //每日实时充值
 import everyDayRechargeDetail from '../basicData/everyDayRechargeDetail.vue'; //每日充值明细
-import dayActivityUserActive from '../basicData/dayActivityUserActive.vue'; //日活用户行为
+import dailyCallSummary from '../basicData/dailyCallSummary.vue'; //日活用户行为
 
 // 把router 引用进入vue
 Vue.use(VueRouter);
@@ -81,7 +81,7 @@ export const asyncRouterMap = [
                     { path: '/everyMonthRechargeDetail', component: everyMonthRechargeDetail, name: '每月充值明细', hidden: false ,meta: { role: ['admin'] }},
                     { path: '/everyDayCurrntTimeRecharge', component: everyDayCurrntTimeRecharge, name: '每日实时充值', hidden: false ,meta: { role: ['admin'] }},
                     { path: '/everyDayRechargeDetail', component: everyDayRechargeDetail, name: '每日充值明细', hidden: false ,meta: { role: ['admin'] }},
-                    { path: '/dayActivityUserActive', component: dayActivityUserActive, name: '日活用户行为', hidden: false ,meta: { role: ['admin'] }},
+                    { path: '/dailyCallSummary', component: dailyCallSummary, name: '日活用户行为', hidden: false ,meta: { role: ['admin'] }},
                     // { path: '/401', component: Err401, name: '401' },
                 ]
             },

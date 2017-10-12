@@ -1,26 +1,25 @@
 <template>
 	<section>
 		<!--charts 饼图-->
-		<div class="row-fluid">
-			<div class="portlet box blue ">
-				<div class="portlet-title">
-					<div class="caption">
-						<i class="icon-globe"></i> 查询条件
+		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
+			<el-form :inline="true" :model="filters">
+				<el-form-item>
+					<div class="block">
+						<span class="demonstration">时间</span>
+						<el-date-picker
+								v-model="start_time_one"
+								type="month"
+								placeholder="选择日期范围">
+						</el-date-picker>
 					</div>
-				</div>
-				<div class="portlet-body">
-					<div class="row-fluid">
-						<div class="span5 paddingleft20">
-							<div id="date_9" style="width:210px;display:inline-block;"></div>
-						</div>
-					</div>
-					<div class="row-fluid">
-						<!-- <a class="btn blue" href="javascript:;" id="toExcel">导出</a> -->
-						<button id="btnsearch1" class="btn blue" style="float:right;"><i class="icon-search"></i>搜索</button>
-					</div>
-				</div>
-			</div>
-		</div>
+				</el-form-item>
+
+				<el-form-item style="float:right">
+					<el-button type="primary" v-on:click="getGraphData">查询</el-button>
+				</el-form-item>
+			</el-form>
+		</el-col>
+		<!--echarts绘图-->
 		<div id="cavs">
 			<div class="hide" id="texte">
 			</div>
@@ -28,10 +27,7 @@
 			<div id="containers" style="min-width: 400px; height: 400px; max-width: 600px; float: right;"></div>
 		</div>
 
-		<!-- 图形 -->
-		<el-col :span="24" style="overflow-x:hidden">
-			<div id="chartLine" style="width:100%; height:400px;"></div>
-		</el-col>
+
 		<!--工具条-->
 		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 			<el-form :inline="true" :model="filters">
@@ -51,15 +47,6 @@
 						</el-date-picker>
 					</div>
 				</el-form-item>
-				<span class="demonstration">性别</span>
-				<el-select v-model="sex" placeholder="请选择">
-					<el-option
-							v-for="item in options"
-							:key="item.value"
-							:label="item.label"
-							:value="item.value">
-					</el-option>
-				</el-select>
 				<el-form-item style="float:right">
 					<el-button type="primary" v-on:click="getUser">查询</el-button>
 					<el-button type="primary" v-on:click="handleDownload">导出</el-button>
@@ -129,21 +116,8 @@ import echarts from 'echarts';
 				listLoading: false,
 //				time_value:[new Date()-3*24*60*60*1000,new Date()],
 				start_time:new Date()-6*30*24*60*60*1000,
+				start_time_one:new Date(),
 				end_time:new Date(),
-                options:[
-                    {
-                        value: '',
-                        label: '全部'
-                    },
-                    {
-                        value: '1',
-                        label: '男'
-                    },{
-                        value: '2',
-                        label: '女'
-                    }
-                ],
-                sex:"",
                 obj:[],
 				sels: [],//列表选中列
 				alltime:[],
@@ -152,6 +126,16 @@ import echarts from 'echarts';
 				newregister:[],
 				ajaxrate:[],
 				ajaxact:[],
+				//	图形渲染参数
+				graphData:[],// 图形数据
+				onetimes:"1213",
+				sixtimes:"",
+				tentimes:"",
+				twentytimes:"",
+				fiftytimes:"",
+				hundredtimes:"",
+				thousandtimes:"",
+				aaa:[12,45,23,23,56]
 			}
 		},
 		computed:{
@@ -166,7 +150,6 @@ import echarts from 'echarts';
 			},
             //页面的页数
 			handleCurrentChange(val) {
-				// console.log(val);
 				this.page = val;
 				this.star = this.page*20-20;
 				this.end = this.star+20;
@@ -196,7 +179,7 @@ import echarts from 'echarts';
 					month_end:this.YMDdata(this.end_time),
                 }
                 allget(data, url).then(data => {
-                    console.log(data);
+//                    console.log(data);
                     // console.log('获取用户信息');
 					_this.totalpage = data.data.data.length;
                     _this.users = data.data.data;
@@ -211,11 +194,49 @@ import echarts from 'echarts';
                         })
 					});
 
-					this.canvas();
+//					this.canvas();
                 }).catch(function(err){
 					console.log(err);
 				});
                 this.listLoading = false;
+			},
+//			获取图形列表数据
+			getGraphData() {
+				let _this = this;
+				let url = 'Money/getChatGoldChargeByMonth'
+				let data = {
+					month:this.YMDdata(this.start_time_one)
+				}
+				allget(data,url).then(data => {
+					_this.graphData = [];
+					_this.graphData.push(data.data.data[0].onetimes,data.data.data[0].sixtimes,data.data.data[0].tentimes,data.data.data[0].twentytimes,
+					data.data.data[0].fiftytimes,data.data.data[0].hundredtimes,data.data.data[0].thousandtimes);
+					_this.onetimes = data.data.data[0].onetimes;
+					_this.sixtimes = data.data.data[0].sixtimes;
+					_this.tentimes = data.data.data[0].tentimes;
+					_this.twentytimes = data.data.data[0].twentytimes;
+					_this.fiftytimes = data.data.data[0].fiftytimes;
+					_this.hundredtimes = data.data.data[0].hundredtimes;
+					_this.thousandtimes = data.data.data[0].thousandtimes;
+
+					_this.aaa = [12,45,78,99];
+					_this.aaa.push(23)
+					console.log("这里运行了没有",_this.aaa)
+//					_this.aaa = [
+//						{value:_this.onetimes,name:"1元"},
+//						{value:_this.sixtimes,name:"6元"},
+//						{value:_this.tentimes,name:"10元"},
+//						{value:_this.twentytimes,name:"20元"},
+//						{value:_this.fiftytimes,name:"50元"},
+//						{value:_this.hundredtimes,name:"100元"},
+//						{value:_this.thousandtimes,name:"1000元"},
+//					]
+				}).catch(function(err){
+					console.log(err);
+				})
+				this.aaa = [2,2,2,2,2];
+//				this.chartPie.setOption(option);
+				console.log("打印aaa的值",this.aaa)
 			},
 			// 第二种导出方式
 			handleDownload() {
@@ -297,8 +318,8 @@ import echarts from 'echarts';
 		mounted() {
             this.$nextTick(function(){
 				this.getUser();
+				this.getGraphData();
             })
-			console.log(this.time_value);
 //			初始化echarts实例
 			this.chartPie = echarts.init(document.getElementById('container'));
 			this.chartPie.setOption({
@@ -314,7 +335,7 @@ import echarts from 'echarts';
 				legend: {
 					orient: 'horizontal',
 					bottom: 'bottom',
-					data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+					data: ['1元', '6元','10元','20元','50元','100元','1000元']
 				},
 				series: [
 					{
@@ -322,13 +343,10 @@ import echarts from 'echarts';
 						type: 'pie',
 						radius: '55%',
 						center: ['50%', '60%'],
-						data: [
-							{ value: 335, name: '直接访问' },
-							{ value: 310, name: '邮件营销' },
-							{ value: 234, name: '联盟广告' },
-							{ value: 135, name: '视频广告' },
-							{ value: 1548, name: '搜索引擎' }
-						],
+//						data: [{value:122,name:"1元"},
+//							{value:222,name:"6元"}
+//						],
+						data:this.aaa,
 						itemStyle: {
 							emphasis: {
 								shadowBlur: 10,
